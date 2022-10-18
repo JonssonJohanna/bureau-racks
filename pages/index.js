@@ -6,19 +6,22 @@ import { GoogleMap, useJsApiLoader } from "@react-google-maps/api";
 const mapContainerStyle = {
   width: "100vw",
   height: "100vh",
-};
+}; 
+const center = { lat: 57.708870, long: 11.974560 };
 
 export default function Home() {
   // apiKey={"AIzaSyCn18tEMgEvKBitx1sJvGAD9o3J_cnXhJM"}
   const { isLoaded, loadError } = useJsApiLoader({
-    googleMapsApiKey: process.env.NEXT_APP_GOOGLE_MAPS_API_KEY,
+    googleMapsApiKey:"AIzaSyBmuxMBOxvnRtJt75AcUvGlFVb3k4vPC10",
   });
   if (loadError) return "Error with maps";
   if (!isLoaded) return "Loading maps";
 
   return (
     <div>
-      <GoogleMap mapContainerStyle={mapContainerStyle}></GoogleMap>
+      <GoogleMap mapContainerStyle={mapContainerStyle} 
+      zoom={8}
+      center={center}></GoogleMap>
     </div>
   );
 
@@ -33,18 +36,7 @@ export default function Home() {
         <h1>Hej </h1>
       </main>
 
-      <footer className={styles.footer}>
-        <a
-          href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Powered by{" "}
-          <span className={styles.logo}>
-            <Image src="/vercel.svg" alt="Vercel Logo" width={72} height={16} />
-          </span>
-        </a>
-      </footer>
+     
     </div>
   );
 }
