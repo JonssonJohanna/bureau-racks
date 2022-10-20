@@ -1,3 +1,9 @@
+@font-face {
+  font-family: "HWT";   /*Can be any text*/
+  src: local("HWT-Gothic-Round"),
+    url("../src/fonts/HWT-Gothic-Round.woff") format("woff");
+}
+
 html,
 body {
   padding: 0;
@@ -17,4 +23,9 @@ a {
 
 body {
   background: #f2e9e1;
+}
+
+h1 {
+  font-family: "HWT";
+  font-size: 6rem;
 }
