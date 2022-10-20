@@ -4,7 +4,6 @@ export const MapContainerWrapper = styled.div`
   height: 50%;
   width: 50%;
   display: flex;
-
   background-color: beige;
 `;
 
