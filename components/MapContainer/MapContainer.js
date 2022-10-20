@@ -1,5 +1,5 @@
 import { GoogleMap, LoadScript } from "@react-google-maps/api";
-import { MapContainerWrapper, MapContainerText } from "./styles";
+import { MapContainerWrapper, MapContainerText } from "./styles.js";
 
 const MapContainer = () => {
   const mapContainerStyle = {
