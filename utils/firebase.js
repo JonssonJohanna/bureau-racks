@@ -1,7 +1,5 @@
 import { initializeApp } from "firebase/app";
 import { getFirestore, collection, getDocs } from "firebase/firestore";
-// import { FirebaseApp } from "firebase/app";
-// import { Firestore } from "firebase/firestore";
 
 const config = {
   apiKey: "AIzaSyAqOSxIWs4shc_X0QQpsTSIZnbuAU0ncoc",
@@ -20,13 +18,7 @@ const config = {
 };
 // const firestore = initializeApp(config);
 
-// export { firestore };
 initializeApp(config);
 
 const db = getFirestore();
-
-const colRef = collection(db, "markers");
-
-getDocs(colRef).then((snapshot) => {
-  console.log(snapshot.docs);
-});
+export { db };

@@ -1,8 +1,16 @@
-// import { firestore } from "./firebase";
+import { collection, getDocs } from "firebase/firestore";
+import { db } from "./firebase";
 
-// const getMarkers = async () => {
-//   const snapshot = await firestore.collection("markers").get();
-//   snapshot.docs.forEach((doc) => console.log(doc.data()));
-// };
+const colRef = collection(db, "markers");
 
-// export { getMarkers };
+getDocs(colRef)
+  .then((snapshot) => {
+    let markers = [];
+    snapshot.docs.forEach((doc) => {
+      markers.push({ ...doc.data(), id: doc.id });
+    });
+    console.log(markers);
+  })
+  .catch((err) => {
+    console.log(err.message);
+  });
