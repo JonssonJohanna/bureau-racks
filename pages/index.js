@@ -35,8 +35,15 @@ export default function Home() {
   const colRef = collection(db, "markers");
 
   getDocs(colRef).then((snapshot) => {
-    console.log(snapshot.docs);
-  });
+  let markers = []
+  snapshot.docs.forEach((doc) => {
+    markers.push({...doc.data(), id: doc.id })
+  }) 
+  console.log(markers)
+  })
+  .catch(err => {
+    console.log(err.message)
+  })
   return (
     <div>
       <Head>
