@@ -1,4 +1,4 @@
-import { GoogleMap, LoadScript } from "@react-google-maps/api";
+import { GoogleMap, LoadScript, Marker } from "@react-google-maps/api";
 import { MapContainerWrapper, MapContainerText } from "./styles.js";
 
 const MapContainer = () => {
@@ -17,7 +17,9 @@ const MapContainer = () => {
           mapContainerStyle={mapContainerStyle}
           zoom={8}
           center={center}
+          // Marker position={{ lat: -34.397, lng: 150.644 }} />}
         ></GoogleMap>
+        <Marker position={{ lat: 57.71337, lng: 12.00273 }}></Marker>
       </LoadScript>
       <MapContainerText>Filtrera</MapContainerText>
     </MapContainerWrapper>
