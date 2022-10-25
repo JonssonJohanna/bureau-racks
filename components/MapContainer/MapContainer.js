@@ -1,4 +1,4 @@
-import { GoogleMap, LoadScript, Marker } from "@react-google-maps/api";
+import { GoogleMap, Marker, useJsApiLoader } from "@react-google-maps/api";
 import { MapContainerWrapper, MapContainerText } from "./styles.js";
 
 const MapContainer = () => {
@@ -10,9 +10,13 @@ const MapContainer = () => {
 
   const apiKey = process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY;
 
+  const { isLoaded } = useJsApiLoader({
+    googleMapsApiKey: apiKey,
+  });
+
   return (
     <MapContainerWrapper>
-      <LoadScript googleMapsApiKey={apiKey}>
+      {isLoaded && (
         <GoogleMap
           mapContainerStyle={mapContainerStyle}
           zoom={8}
@@ -20,7 +24,8 @@ const MapContainer = () => {
         >
           <Marker position={{ lat: 57.71337, lng: 12.00273 }}></Marker>
         </GoogleMap>
-      </LoadScript>
+      )}
+
       <MapContainerText>Filtrera</MapContainerText>
     </MapContainerWrapper>
   );
