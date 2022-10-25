@@ -17,9 +17,9 @@ const MapContainer = () => {
           mapContainerStyle={mapContainerStyle}
           zoom={8}
           center={center}
-          // Marker position={{ lat: -34.397, lng: 150.644 }} />}
-        ></GoogleMap>
-        <Marker position={{ lat: 57.71337, lng: 12.00273 }}></Marker>
+        >
+          <Marker position={{ lat: 57.71337, lng: 12.00273 }}></Marker>
+        </GoogleMap>
       </LoadScript>
       <MapContainerText>Filtrera</MapContainerText>
     </MapContainerWrapper>
