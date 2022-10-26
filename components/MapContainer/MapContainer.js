@@ -1,4 +1,9 @@
-import { GoogleMap, Marker, useJsApiLoader } from "@react-google-maps/api";
+import {
+  GoogleMap,
+  InfoWindow,
+  Marker,
+  useJsApiLoader,
+} from "@react-google-maps/api";
 import { MapContainerWrapper, MapContainerText } from "./styles.js";
 import { initializeApp } from "firebase/app";
 import { getFirestore, collection, getDocs } from "firebase/firestore";
@@ -22,6 +27,7 @@ const MapContainer = () => {
 
   // Firebase realterat
   const [markers, setMarkers] = useState([]);
+  const [selectedMarkers, setSelectedMarkers] = useState(null);
 
   useEffect(() => {
     const getMarkers = async () => {
@@ -30,16 +36,15 @@ const MapContainer = () => {
     };
     getMarkers();
   }, []);
-
   return (
     <MapContainerWrapper>
       {isLoaded && (
         <GoogleMap
           mapContainerStyle={mapContainerStyle}
-          zoom={8}
+          zoom={14}
           center={center}
         >
-          {markers.map((marker) => {
+{markers.map((marker) => {
             console.log(marker);
             return (
               <div key={marker.id}>
@@ -48,10 +53,31 @@ const MapContainer = () => {
                     lat: marker.geoPoint._lat,
                     lng: marker.geoPoint._long,
                   }}
+
+                  icon = {{
+                    url: "/dawg.svg",
+                    scaledSize: new window.google.maps.Size(30,30),
+                  }}
+
+                  onClick={() => {
+                    setSelectedMarkers(marker);
+                  }}
                 ></Marker>
               </div>
             );
           })}
+          {selectedMarkers ? (
+            <InfoWindow
+              position={{
+                lat: selectedMarkers.geoPoint._lat,
+                lng: selectedMarkers.geoPoint._long,
+              }}
+            >
+              <div>
+                <h3>Hej</h3>
+              </div>
+            </InfoWindow>
+          ) : null}
         </GoogleMap>
       )}
 
