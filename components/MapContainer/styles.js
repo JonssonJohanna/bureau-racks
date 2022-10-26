@@ -7,6 +7,11 @@ export const MapContainerWrapper = styled.div`
   background-color: beige;
 `;
 
+export const GoogleMap = styled.map`
+  justify-content: center;
+`
+
+
 export const MapContainerText = styled.div`
   font-weight: bold;
   padding: 3rem;

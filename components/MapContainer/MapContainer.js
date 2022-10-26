@@ -72,9 +72,14 @@ const MapContainer = () => {
                 lat: selectedMarkers.geoPoint._lat,
                 lng: selectedMarkers.geoPoint._long,
               }}
+
+              onCloseClick = {() => { 
+                setSelectedMarkers(null);
+              }}
             >
               <div>
-                <h3>Hej</h3>
+                <h3> { selectedMarkers.name }</h3>
+                <p> { selectedMarkers.type} </p>
               </div>
             </InfoWindow>
           ) : null}
