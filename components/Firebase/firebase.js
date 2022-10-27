@@ -1,5 +1,11 @@
 import { initializeApp } from "firebase/app";
-import { getFirestore, collection, getDocs } from "firebase/firestore";
+import {
+  getFirestore,
+  collection,
+  getDocs,
+  query,
+  where,
+} from "firebase/firestore";
 const config = {
   apiKey: "AIzaSyAqOSxIWs4shc_X0QQpsTSIZnbuAU0ncoc",
 
@@ -20,6 +26,4 @@ initializeApp(config);
 
 const db = getFirestore();
 
-const colRef = collection(db, "markers");
-
-export { colRef };
+export { db };

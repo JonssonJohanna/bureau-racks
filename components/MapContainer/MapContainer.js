@@ -5,11 +5,9 @@ import {
   useJsApiLoader,
 } from "@react-google-maps/api";
 import { MapContainerWrapper, MapContainerText } from "./styles.js";
-import { initializeApp } from "firebase/app";
-import { getFirestore, collection, getDocs } from "firebase/firestore";
-import { db } from "/components/Firebase/firebase.js";
+import { getDocs, collection, query, where } from "firebase/firestore";
 import { useEffect, useState } from "react";
-import { colRef } from "../Firebase/firebase.js";
+import { db } from "../Firebase/firebase.js";
 
 const MapContainer = () => {
   // Sätter upp google maps API
@@ -31,11 +29,32 @@ const MapContainer = () => {
 
   useEffect(() => {
     const getMarkers = async () => {
-      const data = await getDocs(colRef);
-      setMarkers(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
+      const colRef = collection(db, "markers");
+      const query = query(colRef, where("type", "==", "Webbyrå"));
+      console.log(query);
+      await getDocs(query).then((data) => {
+        setMarkers(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
+      });
     };
     getMarkers();
   }, []);
+
+  // const getMarkers = () => {
+  //   const colRef = collection(db, "markers");
+  //   const q = query(colRef, where("name", "==", "Aino"));
+  //   console.log(q);
+  //   getDocs(q).then((data) => {
+  //     setMarkers(
+  //       data.docs.map((doc) => {
+  //         return { ...doc.data(), id: doc.id };
+  //       })
+  //     );
+  //   });
+  // };
+  // useEffect(() => {
+  //   const thedata = getMarkers();
+  // }, []);
+
   return (
     <MapContainerWrapper>
       {isLoaded && (
@@ -44,8 +63,7 @@ const MapContainer = () => {
           zoom={14}
           center={center}
         >
-{markers.map((marker) => {
-            console.log(marker);
+          {markers.map((marker) => {
             return (
               <div key={marker.id}>
                 <Marker
@@ -53,12 +71,10 @@ const MapContainer = () => {
                     lat: marker.geoPoint._lat,
                     lng: marker.geoPoint._long,
                   }}
-
-                  icon = {{
+                  icon={{
                     url: "/dawg.svg",
-                    scaledSize: new window.google.maps.Size(30,30),
+                    scaledSize: new window.google.maps.Size(30, 30),
                   }}
-
                   onClick={() => {
                     setSelectedMarkers(marker);
                   }}
@@ -72,14 +88,13 @@ const MapContainer = () => {
                 lat: selectedMarkers.geoPoint._lat,
                 lng: selectedMarkers.geoPoint._long,
               }}
-
-              onCloseClick = {() => { 
+              onCloseClick={() => {
                 setSelectedMarkers(null);
               }}
             >
               <div>
-                <h3> { selectedMarkers.name }</h3>
-                <p> { selectedMarkers.type} </p>
+                <h3> {selectedMarkers.name}</h3>
+                <p> {selectedMarkers.type} </p>
               </div>
             </InfoWindow>
           ) : null}
