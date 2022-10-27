@@ -7,7 +7,7 @@ import {
 import { MapContainerWrapper, MapContainerText } from "./styles.js";
 import { getDocs, collection, query, where } from "firebase/firestore";
 import { useEffect, useState } from "react";
-import { db } from "../Firebase/firebase.js";
+import { queryList } from "../Firebase/firebase.js";
 
 const MapContainer = () => {
   // Sätter upp google maps API
@@ -29,10 +29,8 @@ const MapContainer = () => {
 
   useEffect(() => {
     const getMarkers = async () => {
-      const colRef = collection(db, "markers");
-      const query = query(colRef, where("type", "==", "Webbyrå"));
-      console.log(query);
-      await getDocs(query).then((data) => {
+      console.log(queryList);
+      await getDocs(queryList).then((data) => {
         setMarkers(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
       });
     };

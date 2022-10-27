@@ -26,4 +26,7 @@ initializeApp(config);
 
 const db = getFirestore();
 
-export { db };
+const colRef = collection(db, "markers");
+const queryList = query(colRef, where("type", "==", "Webbyrå"));
+
+export { queryList };
