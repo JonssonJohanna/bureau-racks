@@ -4,10 +4,19 @@ import {
   Marker,
   useJsApiLoader,
 } from "@react-google-maps/api";
-import { MapContainerWrapper, MapContainerText } from "./styles.js";
-import { getDocs, collection, query, where } from "firebase/firestore";
+import { MapContainerWrapper, MapContainerText, Button } from "./styles.js";
+import {
+  getDocs,
+  DocumentData,
+  query,
+  collection,
+  doc,
+  firestore,
+  onSnapshot,
+  where,
+} from "firebase/firestore";
 import { useEffect, useState } from "react";
-import { queryList } from "../Firebase/firebase.js";
+import { queryList, colRef } from "../Firebase/firebase.js";
 
 const MapContainer = () => {
   // Sätter upp google maps API
@@ -26,32 +35,32 @@ const MapContainer = () => {
   // Firebase realterat
   const [markers, setMarkers] = useState([]);
   const [selectedMarkers, setSelectedMarkers] = useState(null);
+  const [singleBureau, setSingleBureau] = useState({});
 
+  const getMarkers = async () => {
+    console.log(colRef);
+    await getDocs(colRef).then((data) => {
+      setMarkers(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
+    });
+  };
   useEffect(() => {
-    const getMarkers = async () => {
-      console.log(queryList);
-      await getDocs(queryList).then((data) => {
-        setMarkers(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
-      });
-    };
+    if (!markers) return null;
     getMarkers();
   }, []);
 
-  // const getMarkers = () => {
-  //   const colRef = collection(db, "markers");
-  //   const q = query(colRef, where("name", "==", "Aino"));
-  //   console.log(q);
-  //   getDocs(q).then((data) => {
-  //     setMarkers(
-  //       data.docs.map((doc) => {
-  //         return { ...doc.data(), id: doc.id };
-  //       })
-  //     );
-  //   });
-  // };
-  // useEffect(() => {
-  //   const thedata = getMarkers();
-  // }, []);
+  const queryList = query(colRef, where("type", "==", "Produktbolag"));
+
+  function fetchChoosenBureau(e) {
+    onSnapshot(queryList, (snap) => {
+      if (!snap.empty) {
+        const data = snap.docs[0].data();
+        console.log(data);
+      } else {
+        console.log("error");
+      }
+    });
+    console.log(queryList);
+  }
 
   return (
     <MapContainerWrapper>
@@ -99,7 +108,10 @@ const MapContainer = () => {
         </GoogleMap>
       )}
 
-      <MapContainerText>Filtrera</MapContainerText>
+      <MapContainerText>
+        Filtrera
+        <Button onClick={fetchChoosenBureau}>Produktbolag</Button>
+      </MapContainerText>
     </MapContainerWrapper>
   );
 };

@@ -9,12 +9,17 @@ export const MapContainerWrapper = styled.div`
 
 export const GoogleMap = styled.map`
   justify-content: center;
-`
-
+`;
 
 export const MapContainerText = styled.div`
   font-weight: bold;
   padding: 3rem;
   color: red;
   background-color: beige;
+`;
+
+export const Button = styled.button`
+  background-color: white;
+  color: red;
+  padding: 2rem;
 `;

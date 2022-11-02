@@ -5,6 +5,7 @@ import {
   getDocs,
   query,
   where,
+  firestore,
 } from "firebase/firestore";
 const config = {
   apiKey: "AIzaSyAqOSxIWs4shc_X0QQpsTSIZnbuAU0ncoc",
@@ -27,6 +28,6 @@ initializeApp(config);
 const db = getFirestore();
 
 const colRef = collection(db, "markers");
-const queryList = query(colRef, where("type", "==", "Webbyrå"));
+// const queryList = query(colRef, where("type", "==", "Produktbolag"));
 
-export { queryList };
+export { colRef };
