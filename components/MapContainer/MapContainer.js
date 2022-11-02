@@ -18,6 +18,20 @@ import {
 import { useEffect, useState } from "react";
 import { queryList, colRef } from "../Firebase/firebase.js";
 
+const FILTERS = {
+  WEBB: "Webbbyrå",
+  PRODUKT: "Produktbolag",
+  REKLAM: "Reklambyrå",
+};
+
+const filterData = (docs, filterType) =>
+  docs
+    .filter((doc) => doc.data().type === filterType)
+    .map((doc) => ({
+      id: doc.id,
+      ...doc.data(),
+    }));
+
 const MapContainer = () => {
   // Sätter upp google maps API
   const mapContainerStyle = {
@@ -32,13 +46,15 @@ const MapContainer = () => {
     googleMapsApiKey: apiKey,
   });
 
+  // filterData(docs, FILTERS.PRODUKT);
+
   // Firebase realterat
   const [markers, setMarkers] = useState([]);
   const [selectedMarkers, setSelectedMarkers] = useState(null);
-  const [singleBureau, setSingleBureau] = useState({});
+/*   const [singleBureau, setSingleBureau] = useState({});
+ */  const [selectedType, setSelectedType] = useState("All");
 
   const getMarkers = async () => {
-    console.log(colRef);
     await getDocs(colRef).then((data) => {
       setMarkers(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
     });
@@ -48,47 +64,57 @@ const MapContainer = () => {
     getMarkers();
   }, []);
 
-  const queryList = query(colRef, where("type", "==", "Produktbolag"));
-
-  function fetchChoosenBureau(e) {
-    onSnapshot(queryList, (snap) => {
-      if (!snap.empty) {
-        const data = snap.docs[0].data();
-        console.log(data);
-      } else {
-        console.log("error");
-      }
-    });
-    console.log(queryList);
-  }
+  console.log(markers);
 
   return (
     <MapContainerWrapper>
       {isLoaded && (
         <GoogleMap
           mapContainerStyle={mapContainerStyle}
-          zoom={14}
+          zoom={12}
           center={center}
         >
-          {markers.map((marker) => {
-            return (
-              <div key={marker.id}>
-                <Marker
-                  position={{
-                    lat: marker.geoPoint._lat,
-                    lng: marker.geoPoint._long,
-                  }}
-                  icon={{
-                    url: "/dawg.svg",
-                    scaledSize: new window.google.maps.Size(30, 30),
-                  }}
-                  onClick={() => {
-                    setSelectedMarkers(marker);
-                  }}
-                ></Marker>
-              </div>
-            );
-          })}
+          {selectedType === "All"
+            ? markers.map((marker) => {
+                return (
+                  <div key={marker.id}>
+                    <Marker
+                      position={{
+                        lat: marker.geoPoint._lat,
+                        lng: marker.geoPoint._long,
+                      }}
+                      icon={{
+                        url: "/dawg.svg",
+                        scaledSize: new window.google.maps.Size(30, 30),
+                      }}
+                      onClick={() => {
+                        setSelectedMarkers(marker);
+                      }}
+                    />
+                  </div>
+                );
+              })
+            : markers
+                .filter((marker) => marker.type === selectedType)
+                .map((marker) => {
+                  return (
+                    <div key={marker.id}>
+                      <Marker
+                        position={{
+                          lat: marker.geoPoint._lat,
+                          lng: marker.geoPoint._long,
+                        }}
+                        icon={{
+                          url: "/dawg.svg",
+                          scaledSize: new window.google.maps.Size(30, 30),
+                        }}
+                        onClick={() => {
+                          setSelectedMarkers(marker);
+                        }}
+                      />
+                    </div>
+                  );
+                })}
           {selectedMarkers ? (
             <InfoWindow
               position={{
@@ -109,8 +135,15 @@ const MapContainer = () => {
       )}
 
       <MapContainerText>
-        Filtrera
-        <Button onClick={fetchChoosenBureau}>Produktbolag</Button>
+        Filtrera: {selectedType}
+        <Button onClick={() => setSelectedType("Produktbolag")}>
+          Produktbolag
+        </Button>
+        <Button onClick={() => setSelectedType("Webbyrå")}>Webbbyrå</Button>
+        <Button onClick={() => setSelectedType("Reklambyrå")}>
+          Reklambyrå
+        </Button>
+        {/* <Button onClick={fetchChoosenBureau}>Rensa</Button> */}
       </MapContainerText>
     </MapContainerWrapper>
   );
