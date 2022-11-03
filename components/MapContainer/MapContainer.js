@@ -5,16 +5,7 @@ import {
   useJsApiLoader,
 } from "@react-google-maps/api";
 import { MapContainerWrapper, MapContainerText, Button } from "./styles.js";
-import {
-  getDocs,
-  DocumentData,
-  query,
-  collection,
-  doc,
-  firestore,
-  onSnapshot,
-  where,
-} from "firebase/firestore";
+import { getDocs } from "firebase/firestore";
 import { useEffect, useState } from "react";
 import { queryList, colRef } from "../Firebase/firebase.js";
 
@@ -51,8 +42,7 @@ const MapContainer = () => {
   // Firebase realterat
   const [markers, setMarkers] = useState([]);
   const [selectedMarkers, setSelectedMarkers] = useState(null);
-  /*   const [singleBureau, setSingleBureau] = useState({});
-   */ const [selectedType, setSelectedType] = useState("All");
+  const [selectedType, setSelectedType] = useState("All");
 
   const getMarkers = async () => {
     await getDocs(colRef).then((data) => {
@@ -63,7 +53,6 @@ const MapContainer = () => {
     if (!markers) return null;
     getMarkers();
   }, []);
-
 
   return (
     <MapContainerWrapper>
@@ -135,14 +124,28 @@ const MapContainer = () => {
 
       <MapContainerText>
         Filtrera: {selectedType}
-        <Button onClick={() => setSelectedType("Produktbolag")}>
-          Produktbolag
-        </Button>
-        <Button onClick={() => setSelectedType("Webbyrå")}>Webbbyrå</Button>
-        <Button onClick={() => setSelectedType("Reklambyrå")}>
-          Reklambyrå
-        </Button>
-        <Button onClick={() => setSelectedType("All")}>Rensa</Button>
+        <input
+          type="checkbox"
+          value="Produktbolag"
+          onClick={() => setSelectedType("Produktbolag")}
+        />
+        <input
+          type="checkbox"
+          value="Webbyrå"
+          onClick={() => setSelectedType("Webbyrå")}
+        />
+        <input
+          type="checkbox"
+          value="Reklambyrå"
+          id="topping"
+          name="topping"
+          onClick={() => setSelectedType("Reklambyrå")}
+        />
+        <input
+          type="checkbox"
+          value="Rensa"
+          onClick={() => setSelectedType("All")}
+        />
       </MapContainerText>
     </MapContainerWrapper>
   );
