@@ -9,21 +9,10 @@ export default function Home() {
         <title>Byrårackor</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <h3>Hitta din nya hundvänliga arbetsplats</h3>
-
-      {/* {markers.map((marker) => {
-        console.log(marker);
-        return (
-          <ul className={styles.markerStyle} key={marker.id}>
-            <li>{marker.name}</li>
-            <li>{marker.type}</li>
-            <li>{marker.geoPoint._lat}</li>
-            <li>{marker.geoPoint._long}</li>
-          </ul>
-        );
-      })} */}
-
-      <MapContainer />
+      <div className={styles.mapArea}>
+        <h3>Hitta din nya hundvänliga arbetsplats</h3>
+        <MapContainer />
+      </div>
     </div>
   );
 }

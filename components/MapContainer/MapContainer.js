@@ -64,7 +64,6 @@ const MapContainer = () => {
     getMarkers();
   }, []);
 
-  console.log(markers);
 
   return (
     <MapContainerWrapper>

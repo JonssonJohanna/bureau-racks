@@ -2,20 +2,25 @@ import styled from "styled-components";
 
 export const MapContainerWrapper = styled.div`
   height: 50%;
-  width: 50%;
+  width: 65%;
   display: flex;
-  background-color: beige;
+  flex-direction: row;
+  padding: 2rem;
+  background-color: #172D0A;
 `;
 
 export const GoogleMap = styled.map`
-  justify-content: center;
+flex-direction: row;    
 `;
 
 export const MapContainerText = styled.div`
   font-weight: bold;
   padding: 3rem;
   color: red;
-  background-color: beige;
+  width: 50%;
+
+  display: flex;
+flex-direction:column;
 `;
 
 export const Button = styled.button`
