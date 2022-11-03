@@ -51,8 +51,8 @@ const MapContainer = () => {
   // Firebase realterat
   const [markers, setMarkers] = useState([]);
   const [selectedMarkers, setSelectedMarkers] = useState(null);
-/*   const [singleBureau, setSingleBureau] = useState({});
- */  const [selectedType, setSelectedType] = useState("All");
+  /*   const [singleBureau, setSingleBureau] = useState({});
+   */ const [selectedType, setSelectedType] = useState("All");
 
   const getMarkers = async () => {
     await getDocs(colRef).then((data) => {
@@ -143,7 +143,7 @@ const MapContainer = () => {
         <Button onClick={() => setSelectedType("Reklambyrå")}>
           Reklambyrå
         </Button>
-        {/* <Button onClick={fetchChoosenBureau}>Rensa</Button> */}
+        <Button onClick={() => setSelectedType("All")}>Rensa</Button>
       </MapContainerText>
     </MapContainerWrapper>
   );
