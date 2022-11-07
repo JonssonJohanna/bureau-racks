@@ -11,6 +11,7 @@ const Navbar = () => {
           <a>Om oss</a>
         </Link>
     </NavbarWrapper>
+
   );
 };
 

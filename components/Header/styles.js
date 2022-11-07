@@ -13,6 +13,7 @@ export const Heading = styled.text`
 font-family:"HWT";
 font-size: 5.5rem;
 color: #172D0A;
+padding-right: 1rem;
 `;
 
 

@@ -134,7 +134,7 @@ const MapContainer = () => {
       )}
 
       <MapContainerText>
-        Filtrera: {selectedType}
+        Filtrera val {/* :  {selectedType} */}
         <Button onClick={() => setSelectedType("Produktbolag")}>
           Produktbolag
         </Button>

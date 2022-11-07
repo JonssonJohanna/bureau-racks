@@ -6,8 +6,9 @@ export const MapContainerWrapper = styled.div`
   display: flex;
   flex-direction: row;
   padding: 2rem;
-  background: #f2e9e1;
+  background: #F9F4EF;
   border: 1px;
+
  
 `;
 
@@ -16,16 +17,18 @@ flex-direction: row;
 `;
 
 export const MapContainerText = styled.div`
+  font-family: HWT;
+  font-size: 1.5rem;
   font-weight: bold;
-  padding: 3rem;
-  color: red;
-  width: 50%;
+  padding: 3rem 3rem 2rem 3rem;
+  color: #172D0A;
+  width: 30%;
   display: flex;
 flex-direction:column;
 `;
 
 export const Button = styled.button`
-  background-color: white;
-  color: red;
-  padding: 2rem;
+  background-color: #F9F4EF;
+  color: #172D0A;
+  padding: 1rem;
 `;

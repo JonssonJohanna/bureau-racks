@@ -5,10 +5,10 @@ import Image from 'next/image'
 
  const Header = () => {
     return (
-    
         <TitleWrapper>
-        <Heading>
-        <text>Byrårackor</text>
+
+    <Heading>
+        <text>Byrårackor.se</text>
       </Heading>
       <Image src={walking} width='150' height='120px' alt='standing dog'/>
          </TitleWrapper>
