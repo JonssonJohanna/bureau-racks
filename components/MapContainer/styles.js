@@ -6,11 +6,13 @@ export const MapContainerWrapper = styled.div`
   display: flex;
   flex-direction: row;
   padding: 2rem;
-  background-color: #172D0A;
+  background: #f2e9e1;
+  border: 1px;
+ 
 `;
 
 export const GoogleMap = styled.map`
-flex-direction: row;    
+flex-direction: row;  
 `;
 
 export const MapContainerText = styled.div`
@@ -18,7 +20,6 @@ export const MapContainerText = styled.div`
   padding: 3rem;
   color: red;
   width: 50%;
-
   display: flex;
 flex-direction:column;
 `;
