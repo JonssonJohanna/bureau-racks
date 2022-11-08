@@ -31,6 +31,26 @@ const FILTERS = [
   { label: "Reklambyrå", id: "Reklambyrå", checked: false },
   { label: "Visa alla", id: "All", checked: false},
 ];
+
+
+const [state, setState] = (FILTERS);
+function updateState(id) {
+  const newVal = state.map((item) => {
+    if (item.id === id) {
+      return {
+        ...item,
+        checked: !item.checked,
+      };
+    } else {
+      return {
+        ...item,
+      };
+    }
+  });
+  setState(newVal);
+}
+
+
 //   WEBB: "Webbbyrå",
 //   PRODUKT: "Produktbolag",
 //   REKLAM: "Reklambyrå",
