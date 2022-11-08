@@ -17,12 +17,22 @@ import {
 } from "firebase/firestore";
 import { useEffect, useState } from "react";
 import { queryList, colRef } from "../Firebase/firebase.js";
+import { useRef } from "react";
 
-const FILTERS = {
-  WEBB: "Webbbyrå",
-  PRODUKT: "Produktbolag",
-  REKLAM: "Reklambyrå",
-};
+// gör om denna till en usesate. för att kunna bocka i flera eller en. const modiefiedfilter= filters;
+// filter.dins()
+// setfilters(modifieddfilter)
+
+// loopa igenom alla filter är det någon som är checked true? default alla visas.
+
+const FILTERS = [
+  { label: "Webbyrå", id: "Webbyrå", checked: false },
+  { label: "Produktbolag", id: "Produktbolag", checked: false },
+];
+//   WEBB: "Webbbyrå",
+//   PRODUKT: "Produktbolag",
+//   REKLAM: "Reklambyrå",
+// };
 
 const filterData = (docs, filterType) =>
   docs
@@ -38,6 +48,8 @@ const MapContainer = () => {
     width: "50vw",
     height: "50vh",
   };
+
+  const checkboxRef = useRef([]);
   const center = { lat: 57.70887, lng: 11.97456 };
 
   const apiKey = process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY;
@@ -51,8 +63,7 @@ const MapContainer = () => {
   // Firebase realterat
   const [markers, setMarkers] = useState([]);
   const [selectedMarkers, setSelectedMarkers] = useState(null);
-  /*   const [singleBureau, setSingleBureau] = useState({});
-   */ const [selectedType, setSelectedType] = useState("All");
+  const [selectedType, setSelectedType] = useState("All");
 
   const getMarkers = async () => {
     await getDocs(colRef).then((data) => {
@@ -63,7 +74,6 @@ const MapContainer = () => {
     if (!markers) return null;
     getMarkers();
   }, []);
-
 
   return (
     <MapContainerWrapper>
@@ -135,14 +145,25 @@ const MapContainer = () => {
 
       <MapContainerText>
         Filtrera val {/* :  {selectedType} */}
-        <Button onClick={() => setSelectedType("Produktbolag")}>
-          Produktbolag
-        </Button>
+        {FILTERS.map((filter) => (
+          <>
+            <input
+              name={filter.id}
+              type="checkbox"
+              onChange={(event) => {
+                event.target.checked
+                  ? setSelectedType(filter.id)
+                  : setSelectedType("All");
+              }}
+            />
+            {filter.label}
+          </>
+        ))}
         <Button onClick={() => setSelectedType("Webbyrå")}>Webbbyrå</Button>
         <Button onClick={() => setSelectedType("Reklambyrå")}>
           Reklambyrå
         </Button>
-        <Button onClick={() => setSelectedType("All")}>Rensa</Button>
+        <Button onClick={() => setSelectedType("All")}>Visa alla</Button>
       </MapContainerText>
     </MapContainerWrapper>
   );
