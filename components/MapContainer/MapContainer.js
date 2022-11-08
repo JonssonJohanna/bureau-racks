@@ -28,6 +28,8 @@ import { useRef } from "react";
 const FILTERS = [
   { label: "Webbyrå", id: "Webbyrå", checked: false },
   { label: "Produktbolag", id: "Produktbolag", checked: false },
+  { label: "Reklambyrå", id: "Reklambyrå", checked: false },
+  { label: "Visa alla", id: "All", checked: false},
 ];
 //   WEBB: "Webbbyrå",
 //   PRODUKT: "Produktbolag",
@@ -159,11 +161,11 @@ const MapContainer = () => {
             {filter.label}
           </>
         ))}
-        <Button onClick={() => setSelectedType("Webbyrå")}>Webbbyrå</Button>
+       {/*  <Button onClick={() => setSelectedType("Webbyrå")}>Webbbyrå</Button>
         <Button onClick={() => setSelectedType("Reklambyrå")}>
           Reklambyrå
         </Button>
-        <Button onClick={() => setSelectedType("All")}>Visa alla</Button>
+        <Button onClick={() => setSelectedType("All")}>Visa alla</Button> */}
       </MapContainerText>
     </MapContainerWrapper>
   );
