@@ -1,8 +1,10 @@
+import Info from "../components/Info/Info";
+
 const About = () => {
   return (
-    <div>
-      <h1>Om oss</h1>
-    </div>
+    <>
+      <Info></Info>
+    </>
   );
 };
 

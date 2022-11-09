@@ -1,17 +1,16 @@
 import Link from "next/link";
-import { NavbarWrapper } from "./styles";
+import { NavbarWrapper, NavLink } from "./styles";
 
 const Navbar = () => {
   return (
     <NavbarWrapper>
-        <Link href="/">
-          <a>karta</a>
-        </Link>
-        <Link href="/about">
-          <a>Om oss</a>
-        </Link>
+      <Link href="/">
+        <NavLink>karta</NavLink>
+      </Link>
+      <Link href="/about">
+        <NavLink>Om oss</NavLink>
+      </Link>
     </NavbarWrapper>
-
   );
 };
 
