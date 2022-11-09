@@ -19,42 +19,13 @@ import { useEffect, useState } from "react";
 import { queryList, colRef } from "../Firebase/firebase.js";
 import { useRef } from "react";
 
-// gör om denna till en usesate. för att kunna bocka i flera eller en. const modiefiedfilter= filters;
-// filter.dins()
-// setfilters(modifieddfilter)
-
-// loopa igenom alla filter är det någon som är checked true? default alla visas.
 
 const FILTERS = [
-  { label: "Webbyrå", id: "Webbyrå", checked: false },
-  { label: "Produktbolag", id: "Produktbolag", checked: false },
-  { label: "Reklambyrå", id: "Reklambyrå", checked: false },
-  { label: "Visa alla", id: "All", checked: false},
+  { label: "Webbyrå", id: "Webbyrå" },
+  { label: "Produktbolag", id: "Produktbolag" },
+  { label: "Reklambyrå", id: "Reklambyrå" },
+  { label: "Visa alla", id: "All" },
 ];
-
-
-const [state, setState] = (FILTERS);
-function updateState(id) {
-  const newVal = state.map((item) => {
-    if (item.id === id) {
-      return {
-        ...item,
-        checked: !item.checked,
-      };
-    } else {
-      return {
-        ...item,
-      };
-    }
-  });
-  setState(newVal);
-}
-
-
-//   WEBB: "Webbbyrå",
-//   PRODUKT: "Produktbolag",
-//   REKLAM: "Reklambyrå",
-// };
 
 const filterData = (docs, filterType) =>
   docs
@@ -63,29 +34,30 @@ const filterData = (docs, filterType) =>
       id: doc.id,
       ...doc.data(),
     }));
-
-const MapContainer = () => {
-  // Sätter upp google maps API
+ 
+  // Container för karta
+  const MapContainer = () => {
   const mapContainerStyle = {
     width: "50vw",
     height: "50vh",
   };
-
   const checkboxRef = useRef([]);
   const center = { lat: 57.70887, lng: 11.97456 };
 
+  // Sätter upp google maps API
   const apiKey = process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY;
-
   const { isLoaded } = useJsApiLoader({
     googleMapsApiKey: apiKey,
   });
 
-  // filterData(docs, FILTERS.PRODUKT);
-
   // Firebase realterat
   const [markers, setMarkers] = useState([]);
   const [selectedMarkers, setSelectedMarkers] = useState(null);
-  const [selectedType, setSelectedType] = useState("All");
+  const [selected, setSelected] = useState([]);
+  
+/*   const [selectedType, setSelectedType] = useState("All"); */
+
+
 
   const getMarkers = async () => {
     await getDocs(colRef).then((data) => {
@@ -105,7 +77,7 @@ const MapContainer = () => {
           zoom={12}
           center={center}
         >
-          {selectedType === "All"
+          {selected === "All"
             ? markers.map((marker) => {
                 return (
                   <div key={marker.id}>
@@ -126,7 +98,9 @@ const MapContainer = () => {
                 );
               })
             : markers
-                .filter((marker) => marker.type === selectedType)
+                .filter((marker) => {
+                  return selected.includes(marker.type);
+                })
                 .map((marker) => {
                   return (
                     <div key={marker.id}>
@@ -172,16 +146,34 @@ const MapContainer = () => {
             <input
               name={filter.id}
               type="checkbox"
+              checked={selected.includes(filter.label)}
               onChange={(event) => {
-                event.target.checked
-                  ? setSelectedType(filter.id)
-                  : setSelectedType("All");
+                if (filter.label === "Visa alla") {
+                  setSelected(
+                    FILTERS.filter((item) => item.label !== "Visa alla").map(
+                      (filteredOption) => {
+                        return filteredOption.label;
+                      }
+                    )
+                  );
+                }
+                if (selected.includes(filter.label)) {
+                  setSelected((items) =>
+                    items.filter((item) => item !== filter.label)
+                  );
+                } else {
+                  setSelected((selected) => [...selected, filter.label]);
+                }
+
+                // event.target.checked
+                //   ? setSelectedType(filter.id)
+                //   : setSelectedType("All");
               }}
             />
             {filter.label}
           </>
         ))}
-       {/*  <Button onClick={() => setSelectedType("Webbyrå")}>Webbbyrå</Button>
+        {/*  <Button onClick={() => setSelectedType("Webbyrå")}>Webbbyrå</Button>
         <Button onClick={() => setSelectedType("Reklambyrå")}>
           Reklambyrå
         </Button>
