@@ -19,6 +19,7 @@ import { useEffect, useState } from "react";
 import { queryList, colRef } from "../Firebase/firebase.js";
 import { useRef } from "react";
 
+
 const FILTERS = [
   { label: "Webbyrå", id: "Webbyrå" },
   { label: "Produktbolag", id: "Produktbolag" },
@@ -33,12 +34,12 @@ const filterData = (docs, filterType) =>
       id: doc.id,
       ...doc.data(),
     }));
-
-// Container för karta
-const MapContainer = () => {
+ 
+  // Container för karta
+  const MapContainer = () => {
   const mapContainerStyle = {
-    width: "50vw",
-    height: "50vh",
+    width: "75%",
+    height: "75%",
   };
   const checkboxRef = useRef([]);
   const center = { lat: 57.70887, lng: 11.97456 };
@@ -52,7 +53,11 @@ const MapContainer = () => {
   // Firebase realterat
   const [markers, setMarkers] = useState([]);
   const [selectedMarkers, setSelectedMarkers] = useState(null);
-  const [selected, setSelected] = useState("All");
+  const [selected, setSelected] = useState([]);
+  
+/*   const [selectedType, setSelectedType] = useState("All"); */
+
+
 
   const getMarkers = async () => {
     await getDocs(colRef).then((data) => {

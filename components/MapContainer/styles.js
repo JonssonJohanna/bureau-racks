@@ -1,21 +1,19 @@
 import styled from "styled-components";
 
 export const MapContainerWrapper = styled.div`
-  height: 50%;
-  width: 65%;
+  height: 550px;
+  width: 1140px;
   display: flex;
   flex-direction: row;
-  padding: 2rem;
+  padding: 1.5rem;
   background: #F9F4EF;
-  border: 1px;
-
- 
 `;
 
-export const GoogleMap = styled.map`
-flex-direction: row;  
+/* export const  MapContainerStyle = styled.map`
+  width: "65%";
+  height: "75%";
 `;
-
+ */
 export const MapContainerText = styled.div`
   font-family: HWT;
   font-size: 1.5rem;
