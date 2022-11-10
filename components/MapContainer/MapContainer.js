@@ -8,18 +8,10 @@ import {
   MapContainerWrapper,
   MapContainerText,
   Button,
-  InputCheckbox,
+  Label,
+  Radio,
 } from "./styles.js";
-import {
-  getDocs,
-  DocumentData,
-  query,
-  collection,
-  doc,
-  firestore,
-  onSnapshot,
-  where,
-} from "firebase/firestore";
+import { getDocs } from "firebase/firestore";
 import { useEffect, useState } from "react";
 import { queryList, colRef } from "../Firebase/firebase.js";
 import { useRef } from "react";
@@ -143,34 +135,37 @@ const MapContainer = () => {
         Filtrera val {/* :  {selectedType} */}
         {FILTERS.map((filter) => (
           <>
-            <InputCheckbox
-              name={filter.id}
-              type="checkbox"
-              checked={selected.includes(filter.label)}
-              onChange={(event) => {
-                if (filter.label === "Visa alla") {
-                  setSelected(
-                    FILTERS.filter((item) => item.label !== "Visa alla").map(
-                      (filteredOption) => {
-                        return filteredOption.label;
-                      }
-                    )
-                  );
-                }
-                if (selected.includes(filter.label)) {
-                  setSelected((items) =>
-                    items.filter((item) => item !== filter.label)
-                  );
-                } else {
-                  setSelected((selected) => [...selected, filter.label]);
-                }
+            <Label htmlFor="radio-button">
+              <Radio
+                name={filter.id}
+                type="radio"
+                id="radio-button"
+                checked={selected.includes(filter.label)}
+                onChange={(event) => {
+                  if (filter.label === "Visa alla") {
+                    setSelected(
+                      FILTERS.filter((item) => item.label !== "Visa alla").map(
+                        (filteredOption) => {
+                          return filteredOption.label;
+                        }
+                      )
+                    );
+                  }
+                  if (selected.includes(filter.label)) {
+                    setSelected((items) =>
+                      items.filter((item) => item !== filter.label)
+                    );
+                  } else {
+                    setSelected((selected) => [...selected, filter.label]);
+                  }
 
-                // event.target.checked
-                //   ? setSelectedType(filter.id)
-                //   : setSelectedType("All");
-              }}
-            />
-            {filter.label}
+                  // event.target.checked
+                  //   ? setSelectedType(filter.id)
+                  //   : setSelectedType("All");
+                }}
+              />
+              {filter.label}
+            </Label>
           </>
         ))}
         {/*  <Button onClick={() => setSelectedType("Webbyrå")}>Webbbyrå</Button>
