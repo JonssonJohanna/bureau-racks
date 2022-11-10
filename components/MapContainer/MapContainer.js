@@ -4,7 +4,12 @@ import {
   Marker,
   useJsApiLoader,
 } from "@react-google-maps/api";
-import { MapContainerWrapper, MapContainerText, Button } from "./styles.js";
+import {
+  MapContainerWrapper,
+  MapContainerText,
+  Button,
+  InputCheckbox,
+} from "./styles.js";
 import {
   getDocs,
   DocumentData,
@@ -18,7 +23,6 @@ import {
 import { useEffect, useState } from "react";
 import { queryList, colRef } from "../Firebase/firebase.js";
 import { useRef } from "react";
-
 
 const FILTERS = [
   { label: "Webbyrå", id: "Webbyrå" },
@@ -34,12 +38,12 @@ const filterData = (docs, filterType) =>
       id: doc.id,
       ...doc.data(),
     }));
- 
-  // Container för karta
-  const MapContainer = () => {
+
+// Container för karta
+const MapContainer = () => {
   const mapContainerStyle = {
-    width: "75%",
-    height: "75%",
+    width: "65vw",
+    height: "55vh",
   };
   const checkboxRef = useRef([]);
   const center = { lat: 57.70887, lng: 11.97456 };
@@ -53,11 +57,7 @@ const filterData = (docs, filterType) =>
   // Firebase realterat
   const [markers, setMarkers] = useState([]);
   const [selectedMarkers, setSelectedMarkers] = useState(null);
-  const [selected, setSelected] = useState([]);
-  
-/*   const [selectedType, setSelectedType] = useState("All"); */
-
-
+  const [selected, setSelected] = useState("All");
 
   const getMarkers = async () => {
     await getDocs(colRef).then((data) => {
@@ -143,7 +143,7 @@ const filterData = (docs, filterType) =>
         Filtrera val {/* :  {selectedType} */}
         {FILTERS.map((filter) => (
           <>
-            <input
+            <InputCheckbox
               name={filter.id}
               type="checkbox"
               checked={selected.includes(filter.label)}
