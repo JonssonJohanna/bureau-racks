@@ -135,16 +135,15 @@ const MapContainer = () => {
         Filtrera val {/* :  {selectedType} */}
         {FILTERS.map((filter) => (
           <>
-            <Label htmlFor="radio-button">
+            <Label>
               <Radio
                 name={filter.id}
-                type="radio"
-                id="radio-button"
+                type="checkbox"
                 checked={selected.includes(filter.label)}
                 onChange={(event) => {
-                  if (filter.label === "Visa alla") {
+                  if (filter.label === "All") {
                     setSelected(
-                      FILTERS.filter((item) => item.label !== "Visa alla").map(
+                      FILTERS.filter((item) => item.label !== "All").map(
                         (filteredOption) => {
                           return filteredOption.label;
                         }
@@ -160,8 +159,8 @@ const MapContainer = () => {
                   }
 
                   // event.target.checked
-                  //   ? setSelectedType(filter.id)
-                  //   : setSelectedType("All");
+                  //   ? setSelected(filter.id)
+                  //   : setSelected("All");
                 }}
               />
               {filter.label}

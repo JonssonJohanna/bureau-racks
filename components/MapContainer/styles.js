@@ -50,7 +50,6 @@ export const Radio = styled.input`
   border: 2px solid black;
   background-color: #d9d9d9;
   margin-right: 1rem;
-
   border-radius: 50%;
   ::after {
     content: "";
@@ -59,5 +58,38 @@ export const Radio = styled.input`
     width: 0.75em;
     height: 0.75em;
     margin: 3px;
+  }
+  :hover {
+    ::after {
+      background-color: #d9d9d9;
+    }
+  }
+  /* :focus {
+    outline: 2px solid #172d0a;
+  } */
+  :checked {
+    ::after {
+      background-color: #172d0a;
+    }
+    :disabled {
+      cursor: not-allowed #d9d9d9;
+      background-color: #d9d9d9;
+      :hover {
+        ::after {
+          background-color: #d9d9d9;
+        }
+      }
+      :checked {
+        ::after {
+          background-color: #d9d9d9;
+        }
+        :hover {
+          background-color: #d9d9d9;
+          ::after {
+            background-color: #d9d9d9;
+          }
+        }
+      }
+    }
   }
 `;
