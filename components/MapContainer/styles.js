@@ -64,9 +64,6 @@ export const Radio = styled.input`
       background-color: #d9d9d9;
     }
   }
-  /* :focus {
-    outline: 2px solid #172d0a;
-  } */
   :checked {
     ::after {
       background-color: #172d0a;

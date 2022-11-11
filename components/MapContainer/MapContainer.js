@@ -139,23 +139,23 @@ const MapContainer = () => {
               <Radio
                 name={filter.id}
                 type="checkbox"
-                checked={selected.includes(filter.label)}
+                checked={selected.includes(filter.id)}
                 onChange={(event) => {
-                  if (filter.label === "All") {
+                  if (filter.id === "All") {
                     setSelected(
-                      FILTERS.filter((item) => item.label !== "All").map(
+                      FILTERS.filter((item) => item.id !== "All").map(
                         (filteredOption) => {
-                          return filteredOption.label;
+                          return filteredOption.id;
                         }
                       )
                     );
                   }
-                  if (selected.includes(filter.label)) {
+                  if (selected.includes(filter.id)) {
                     setSelected((items) =>
-                      items.filter((item) => item !== filter.label)
+                      items.filter((item) => item !== filter.id)
                     );
                   } else {
-                    setSelected((selected) => [...selected, filter.label]);
+                    setSelected((selected) => [...selected, filter.id]);
                   }
 
                   // event.target.checked
