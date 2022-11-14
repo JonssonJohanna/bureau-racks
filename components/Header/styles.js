@@ -16,6 +16,7 @@ export const HeroSection = styled.div`
   @media ${device.tablet} {
     flex-direction: row;
   }
+
 `;
 
 export const Heading = styled.text`
@@ -47,7 +48,7 @@ export const Intro = styled.div`
   padding-top: 2rem;
 `;
 export const ImageWrapperHeader = styled.div`
-  width: 100%;
+
   display: flex;
   justify-content: center;
 `;
