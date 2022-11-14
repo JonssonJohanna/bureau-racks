@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { device } from "../Mediaqueries";
 
 export const HeadingWrapper = styled.div`
   display: flex;
@@ -9,10 +10,13 @@ export const HeadingWrapper = styled.div`
 
 export const Heading = styled.h1`
   font-family: "HWT";
-  font-size: 5.5rem;
+  font-size: 2rem;
   color: #172d0a;
   padding: 0%;
   align-self: center;
+  @media ${device.tablet} {
+    font-size: 5.5rem;
+  }
 `;
 
 export const AboutText = styled.text`
@@ -21,13 +25,14 @@ export const AboutText = styled.text`
   color: #172d0a;
   text-align: center;
   align-self: center;
-  width: 50%;
+  width: 70%;
+  @media ${device.tablet} {
+    width: 50%;
+  }
 `;
-
 
 export const ImageWrapper = styled.div`
-width: 100%;
-display: flex;
-justify-content: flex-start;
+  width: 100%;
+  display: flex;
+  justify-content: flex-start;
 `;
- 
