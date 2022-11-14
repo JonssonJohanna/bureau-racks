@@ -10,8 +10,12 @@ export const TitleWrapper = styled.div`
 
 export const HeroSection = styled.div`
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   justify-content: center;
+  text-align: center;
+  @media ${device.tablet} {
+    flex-direction: row;
+  }
 `;
 
 export const Heading = styled.text`
@@ -23,10 +27,6 @@ export const Heading = styled.text`
   @media ${device.tablet} {
     font-size: 5.5rem;
   }
-`;
-
-export const walking = styled.image`
-  width: 100px;
 `;
 
 export const HeroDescription = styled.div`
