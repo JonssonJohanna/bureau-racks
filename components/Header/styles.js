@@ -12,17 +12,17 @@ export const HeroSection = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
-  text-align: center;
-  @media ${device.tablet} {
-    flex-direction: row;
-  }
-`;
+
+`
 
 export const Heading = styled.text`
-  font-family: "HWT";
-  font-size: 2rem;
-  color: #172d0a;
-  padding-right: 1rem;
+font-family:"HWT";
+font-size: var(--h1-desktop);
+color:var(--green);
+padding-right: 1rem;
+
+
+
 
   @media ${device.tablet} {
     font-size: 5.5rem;

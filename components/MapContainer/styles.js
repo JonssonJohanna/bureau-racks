@@ -6,9 +6,7 @@ export const MapContainerWrapper = styled.div`
   display: flex;
   flex-direction: column;
   padding: 1rem;
-  background: #f9f4ef;
-  justify-content: center;
-  align-items: center;
+  background:var(--offwhite);
   margin-bottom: 2rem;
   @media ${device.tablet} {
     width: 80%;
@@ -20,7 +18,9 @@ export const MapContainerText = styled.div`
   font-family: HWT;
   font-size: 1rem;
   font-weight: bold;
-  color: #172d0a;
+  padding: 3rem 3rem 2rem 3rem;
+  color: var(--green);
+  width: 30%;
   display: flex;
   flex-direction: column;
   text-align: left;
@@ -32,15 +32,10 @@ export const MapContainerText = styled.div`
   }
 `;
 
-//Test för att få 'filtrera val' att hamna i column i mobil
-export const FilterHeadingWrapper = styled.div`
-  display: flex;
-  flex-direction: column;
-`;
-export const FilterHeading = styled.p`
-  flex-wrap: wrap;
-  display: flex;
-  flex-direction: row;
+export const Button = styled.button`
+  background-color:var(--beige);
+  color:var(--green);
+  padding: 1rem;
 `;
 export const Label = styled.label`
   font-size: 1rem;
@@ -73,7 +68,7 @@ export const Radio = styled.input`
   width: 1.5em;
   height: 1.5em;
   border: 2px solid black;
-  background-color: #d9d9d9;
+  background-color: var(--checkbox);
   margin-right: 1rem;
   border-radius: 50%;
   ::after {
@@ -86,29 +81,29 @@ export const Radio = styled.input`
   }
   :hover {
     ::after {
-      background-color: #d9d9d9;
+      background-color:var(--checkbox);
     }
   }
   :checked {
     ::after {
-      background-color: #172d0a;
+      background-color:var(--green);
     }
     :disabled {
-      cursor: not-allowed #d9d9d9;
-      background-color: #d9d9d9;
+      cursor: not-allowed var(--checkbox);
+      background-color:var(--checkbox);
       :hover {
         ::after {
-          background-color: #d9d9d9;
+          background-color:var(--checkbox);
         }
       }
       :checked {
         ::after {
-          background-color: #d9d9d9;
+          background-color:var(--checkbox);
         }
         :hover {
-          background-color: #d9d9d9;
+          background-color:var(--checkbox);
           ::after {
-            background-color: #d9d9d9;
+            background-color: var(--checkbox);
           }
         }
       }

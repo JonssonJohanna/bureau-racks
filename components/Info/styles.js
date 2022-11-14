@@ -9,8 +9,8 @@ export const HeadingWrapper = styled.div`
 
 export const Heading = styled.h1`
   font-family: "HWT";
-  font-size: 5.5rem;
-  color: #172d0a;
+  font-size: var(--h1-desktop);
+  color: var(--green);
   padding: 0%;
   align-self: center;
 `;
@@ -18,7 +18,7 @@ export const Heading = styled.h1`
 export const AboutText = styled.text`
   font-size: 1rem;
   font-family: Avenir;
-  color: #172d0a;
+  color:var(--green);
   text-align: center;
   align-self: center;
   width: 50%;

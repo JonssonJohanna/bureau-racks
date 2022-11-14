@@ -4,6 +4,35 @@
     url("../src/fonts/HWT-Gothic-Round.woff") format("woff");
 }
 
+@font-face {
+  font-family: "Avenir";   /*Can be any text*/
+  src: local("Avenir-Book"),
+    url("../src/fonts/Avenir-Book.woff") format("woff");
+}
+
+
+:root {
+  /*--- Colors ---*/
+  --green: #172D0A;
+  --beige:  #f2e9e1;
+  --offwhite: #F9F4EF; 
+  --checkbox: #D9D9D9;
+
+   /*--- Font sizes ---*/
+
+  /* Desktop */
+  --h1-desktop: 5.5rem;
+  --h2-desktop: 2rem;
+/*   --h3-desktop: 1.25rem;
+  --h4-desktop: 1rem;
+ */
+
+
+};
+
+
+
+
 html,
 body {
   padding: 0;
@@ -22,8 +51,7 @@ a {
 }
 
 body {
-  background: #f2e9e1;
-
+  background: var(--beige);
 }
 
 h1 {
@@ -33,6 +61,6 @@ h1 {
 
 h3 {
   font-family: "Avenir";
-  text-decoration: none;
+  font-weight: none;
 }
 
