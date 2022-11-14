@@ -8,6 +8,9 @@ export const MapContainerWrapper = styled.div`
   padding: 1rem;
   background: var(--offwhite);
   margin-bottom: 2rem;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 2rem;
   @media ${device.tablet} {
     width: 80%;
     flex-direction: row;
@@ -18,9 +21,7 @@ export const MapContainerText = styled.div`
   font-family: HWT;
   font-size: 1rem;
   font-weight: bold;
-  padding: 3rem 3rem 2rem 3rem;
   color: var(--green);
-  width: 30%;
   display: flex;
   flex-direction: column;
   text-align: left;

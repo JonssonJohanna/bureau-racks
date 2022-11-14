@@ -14,8 +14,10 @@ export const Heading = styled.h1`
   color: #172d0a;
   padding: 0%;
   align-self: center;
+  font-size: 2rem;
+  margin-top: 0;
   @media ${device.tablet} {
-    font-size: 5.5rem;
+    font-size: var(--h1-desktop);
   }
 `;
 

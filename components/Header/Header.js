@@ -4,6 +4,7 @@ import {
   HeroText,
   HeroDescription,
   HeroSection,
+  ImageWrapperHeader,
 } from "./styles";
 import walking from "./../../public/walking.png";
 import Image from "next/image";
@@ -16,14 +17,14 @@ const Header = () => {
         <Heading>
           <text>Byrårackor.se</text>
         </Heading>
-        <ImageWrapper>
+        <ImageWrapperHeader>
           <Image
             src={walking}
             width="150px"
             height="120px"
             alt="standing dog"
           />
-        </ImageWrapper>
+        </ImageWrapperHeader>
       </HeroSection>
 
       <HeroDescription>
