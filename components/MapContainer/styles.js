@@ -6,7 +6,7 @@ export const MapContainerWrapper = styled.div`
   display: flex;
   flex-direction: column;
   padding: 1rem;
-  background:var(--offwhite);
+  background: var(--offwhite);
   margin-bottom: 2rem;
   @media ${device.tablet} {
     width: 80%;
@@ -32,10 +32,15 @@ export const MapContainerText = styled.div`
   }
 `;
 
-export const Button = styled.button`
-  background-color:var(--beige);
-  color:var(--green);
-  padding: 1rem;
+//Test för att få 'filtrera val' att hamna i column i mobil
+export const FilterHeadingWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+`;
+export const FilterHeading = styled.p`
+  flex-wrap: wrap;
+  display: flex;
+  flex-direction: row;
 `;
 export const Label = styled.label`
   font-size: 1rem;
@@ -81,27 +86,27 @@ export const Radio = styled.input`
   }
   :hover {
     ::after {
-      background-color:var(--checkbox);
+      background-color: var(--checkbox);
     }
   }
   :checked {
     ::after {
-      background-color:var(--green);
+      background-color: var(--green);
     }
     :disabled {
       cursor: not-allowed var(--checkbox);
-      background-color:var(--checkbox);
+      background-color: var(--checkbox);
       :hover {
         ::after {
-          background-color:var(--checkbox);
+          background-color: var(--checkbox);
         }
       }
       :checked {
         ::after {
-          background-color:var(--checkbox);
+          background-color: var(--checkbox);
         }
         :hover {
-          background-color:var(--checkbox);
+          background-color: var(--checkbox);
           ::after {
             background-color: var(--checkbox);
           }
