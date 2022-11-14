@@ -1,43 +1,63 @@
 import styled from "styled-components";
+import { device } from "../Mediaqueries";
 
 export const MapContainerWrapper = styled.div`
-  width: 80%;
+  width: 100%;
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   padding: 1rem;
   background: #f9f4ef;
+  justify-content: center;
+  align-items: center;
   margin-bottom: 2rem;
+  @media ${device.tablet} {
+    width: 80%;
+    flex-direction: row;
+  }
 `;
 
 export const MapContainerText = styled.div`
   font-family: HWT;
-  font-size: 1.5rem;
+  font-size: 1rem;
   font-weight: bold;
-  padding: 3rem 3rem 2rem 3rem;
   color: #172d0a;
-  width: 30%;
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+  @media ${device.tablet} {
+    width: 80%;
+    padding: 3rem 3rem 2rem 3rem;
+    width: 30%;
+    font-size: 1.5rem;
+  }
+`;
+
+//Test för att få 'filtrera val' att hamna i column i mobil
+export const FilterHeadingWrapper = styled.div`
   display: flex;
   flex-direction: column;
 `;
-
-export const Button = styled.button`
-  background-color: #f9f4ef;
-  color: #172d0a;
-  padding: 1rem;
+export const FilterHeading = styled.p`
+  flex-wrap: wrap;
+  display: flex;
+  flex-direction: row;
 `;
 export const Label = styled.label`
   font-size: 1rem;
   font-weight: 600;
   font-family: arial;
-  &:nth-child(1) {
-    padding-bottom: 1rem;
-    padding-top: 1rem;
-  }
-  &:nth-child(2) {
-    padding-bottom: 1rem;
-  }
-  &:nth-child(3) {
-    padding-bottom: 1rem;
+
+  @media ${device.tablet} {
+    &:nth-child(1) {
+      padding-bottom: 1rem;
+      padding-top: 1rem;
+    }
+    &:nth-child(2) {
+      padding-bottom: 1rem;
+    }
+    &:nth-child(3) {
+      padding-bottom: 1rem;
+    }
   }
 `;
 

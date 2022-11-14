@@ -7,10 +7,11 @@ import {
 import {
   MapContainerWrapper,
   MapContainerText,
-  Button,
   Label,
   Radio,
   BureauLink,
+  FilterHeadingWrapper,
+  FilterHeading,
 } from "./styles.js";
 import { getDocs } from "firebase/firestore";
 import { useEffect, useState } from "react";
@@ -134,7 +135,9 @@ const MapContainer = () => {
       )}
 
       <MapContainerText>
-        Filtrera val {/* :  {selectedType} */}
+        <FilterHeadingWrapper>
+          <FilterHeading>Filtrera val</FilterHeading> {/* :  {selectedType} */}
+        </FilterHeadingWrapper>
         {FILTERS.map((filter) => (
           <>
             <Label>
@@ -169,11 +172,6 @@ const MapContainer = () => {
             </Label>
           </>
         ))}
-        {/*  <Button onClick={() => setSelectedType("Webbyrå")}>Webbbyrå</Button>
-        <Button onClick={() => setSelectedType("Reklambyrå")}>
-          Reklambyrå
-        </Button>
-        <Button onClick={() => setSelectedType("All")}>Visa alla</Button> */}
       </MapContainerText>
     </MapContainerWrapper>
   );
