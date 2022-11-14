@@ -10,6 +10,7 @@ import {
   Button,
   Label,
   Radio,
+  BureauLink,
 } from "./styles.js";
 import { getDocs } from "firebase/firestore";
 import { useEffect, useState } from "react";
@@ -125,6 +126,7 @@ const MapContainer = () => {
               <div>
                 <h3> {selectedMarkers.name}</h3>
                 <p> {selectedMarkers.type} </p>
+                <BureauLink> {selectedMarkers.website} </BureauLink>
               </div>
             </InfoWindow>
           ) : null}

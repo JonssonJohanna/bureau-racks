@@ -41,6 +41,11 @@ export const Label = styled.label`
   }
 `;
 
+export const BureauLink = styled.a`
+  cursor: pointer;
+  font-weight: bold;
+`;
+
 export const Radio = styled.input`
   -webkit-appearance: none;
   appearance: none;
