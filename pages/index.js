@@ -12,7 +12,6 @@ export default function Home() {
       </Head>
       <Header />
       <div className={styles.mapArea}>
-        <h3>Hitta din nya hundvänliga arbetsplats</h3>
         <MapContainer />
       </div>
     </div>

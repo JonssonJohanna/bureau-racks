@@ -5,7 +5,7 @@ const Navbar = () => {
   return (
     <NavbarWrapper>
       <Link href="/">
-        <NavLink>karta</NavLink>
+        <NavLink>Karta</NavLink>
       </Link>
       <Link href="/about">
         <NavLink>Om oss</NavLink>
