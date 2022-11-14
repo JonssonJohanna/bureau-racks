@@ -12,15 +12,19 @@ export const HeroSection = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
+  text-align: center;
+  @media ${device.tablet} {
+    flex-direction: row;
+  }
 `;
 
 export const Heading = styled.text`
   font-family: "HWT";
-  font-size: var(--h1-desktop);
   color: var(--green);
   padding-right: 1rem;
+  font-size: 2rem;
   @media ${device.tablet} {
-    font-size: 5.5rem;
+    font-size: var(--h1-desktop);
   }
 `;
 
@@ -30,12 +34,20 @@ export const HeroDescription = styled.div`
   justify-content: center;
 `;
 export const HeroText = styled.text`
-  width: 45%;
+  width: 65%;
   font-family: Avenir;
   text-align: center;
   padding-bottom: 1rem;
+  @media ${device.tablet} {
+    width: 45%;
+  }
 `;
 
 export const Intro = styled.div`
   padding-top: 2rem;
+`;
+export const ImageWrapperHeader = styled.div`
+  width: 100%;
+  display: flex;
+  justify-content: center;
 `;
