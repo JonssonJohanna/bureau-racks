@@ -35,8 +35,7 @@ export const MapContainerText = styled.div`
 
 //Test för att få 'filtrera val' att hamna i column i mobil
 export const FilterHeadingWrapper = styled.div`
-  display: flex;
-  flex-direction: column;
+  padding-bottom: 1rem;
 `;
 export const FilterHeading = styled.p`
   flex-wrap: wrap;

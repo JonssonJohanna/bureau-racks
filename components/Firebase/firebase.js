@@ -28,6 +28,5 @@ initializeApp(config);
 const db = getFirestore();
 
 const colRef = collection(db, "markers");
-// const queryList = query(colRef, where("type", "==", "Produktbolag"));
 
 export { colRef };
