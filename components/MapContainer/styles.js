@@ -19,7 +19,7 @@ export const MapContainerWrapper = styled.div`
 
 export const MapContainerText = styled.div`
   font-family: HWT;
-  font-size: 1rem;
+  font-size: var(--h3-mobile);
   font-weight: bold;
   color: var(--green);
   display: flex;
@@ -29,7 +29,7 @@ export const MapContainerText = styled.div`
     width: 80%;
     padding: 3rem 3rem 2rem 3rem;
     width: 30%;
-    font-size: 1.5rem;
+    font-size: var(--h3-desktop);
   }
 `;
 
@@ -44,9 +44,9 @@ export const FilterHeading = styled.p`
   flex-direction: row;
 `;
 export const Label = styled.label`
-  font-size: 1rem;
+  font-size: var(--p-desktop);
   font-weight: 600;
-  font-family: arial;
+  font-family: "Avenir";
 
   @media ${device.tablet} {
     &:nth-child(1) {
@@ -57,6 +57,9 @@ export const Label = styled.label`
       padding-bottom: 1rem;
     }
     &:nth-child(3) {
+      padding-bottom: 1rem;
+    }
+    &:nth-child(4) {
       padding-bottom: 1rem;
     }
   }

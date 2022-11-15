@@ -23,7 +23,7 @@ export const Heading = styled.text`
   font-family: "HWT";
   color: var(--green);
   padding-right: 1rem;
-  font-size: 2rem;
+  font-size: var(--h1-mobile);
   @media ${device.tablet} {
     font-size: var(--h1-desktop);
   }
@@ -36,9 +36,10 @@ export const HeroDescription = styled.div`
 `;
 export const HeroText = styled.text`
   width: 65%;
-  font-family: Avenir;
+  font-family: "Avenir";
   text-align: center;
   padding-bottom: 1rem;
+  font-size: var(--p-desktop);
   @media ${device.tablet} {
     width: 45%;
   }
