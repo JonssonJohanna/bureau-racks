@@ -10,11 +10,10 @@ export const HeadingWrapper = styled.div`
 
 export const Heading = styled.h1`
   font-family: "HWT";
-  font-size: 5.5rem;
-  color: #172d0a;
+  font-size: var(--h1-mobile);
+  color: var(--green);
   padding: 0%;
   align-self: center;
-  font-size: 2rem;
   margin-top: 0;
   @media ${device.tablet} {
     font-size: var(--h1-desktop);
@@ -22,8 +21,8 @@ export const Heading = styled.h1`
 `;
 
 export const AboutText = styled.text`
-  font-size: 1rem;
-  font-family: Avenir;
+  font-size: var(--p-desktop);
+  font-family: "Avenir";
   color: var(--green);
   text-align: center;
   align-self: center;
