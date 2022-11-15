@@ -10,12 +10,11 @@ import {
   Label,
   Radio,
   BureauLink,
-  FilterHeadingWrapper,
   FilterHeading,
 } from "./styles.js";
 import { getDocs } from "firebase/firestore";
 import { useEffect, useState } from "react";
-import { queryList, colRef } from "../Firebase/firebase.js";
+import { colRef } from "../Firebase/firebase.js";
 import { useRef } from "react";
 
 const FILTERS = [
@@ -133,11 +132,8 @@ const MapContainer = () => {
           ) : null}
         </GoogleMap>
       )}
-
       <MapContainerText>
-        <FilterHeadingWrapper>
-          <FilterHeading>Filtrera val</FilterHeading> {/* :  {selectedType} */}
-        </FilterHeadingWrapper>
+        <FilterHeading>Filtrera val</FilterHeading>
         {FILTERS.map((filter) => (
           <>
             <Label>
@@ -162,10 +158,6 @@ const MapContainer = () => {
                   } else {
                     setSelected((selected) => [...selected, filter.id]);
                   }
-
-                  // event.target.checked
-                  //   ? setSelected(filter.id)
-                  //   : setSelected("All");
                 }}
               />
               {filter.label}
