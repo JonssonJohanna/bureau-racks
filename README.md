@@ -1,3 +1,11 @@
+<image src="https://media.giphy.com/media/xUOwGj1jwTZq5Kh3Ko/giphy.gif" alt="Dog sitting by a computer."/>
+
+## Final school project by Amanda Printz and Johanna Jönsson
+
+As a final part of the program, we have completed a project within the framework of the acquired knowledge. The main purpose of this project was to come up with an idea and build something awesome and cool. We created this website using Next.js and Firestore. The project includes Google maps Api.
+
+Check out our website [here](https://bureau-racks-d4fj.vercel.app/)
+
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 ## Getting Started
