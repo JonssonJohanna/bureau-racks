@@ -8,7 +8,7 @@ export default function Home() {
     <div>
       <Head>
         <title>Byrårackor</title>
-        <link rel="icon" href="/favicon.png" />
+        <link rel="icon" href="/favicon.png" alt="illustrated dog head" />
       </Head>
       <Header />
       <div className={styles.mapArea}>

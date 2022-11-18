@@ -1,24 +1,23 @@
-  /*--- Fonts ---*/
+/*--- Fonts ---*/
 @font-face {
-  font-family: "HWT";   /*Can be any text*/
+  font-family: "HWT";
   src: local("HWT-Gothic-Round"),
     url("../src/fonts/HWT-Gothic-Round.woff") format("woff");
 }
 
 @font-face {
-  font-family: "Avenir";   /*Can be any text*/
-  src: local("Avenir-Book"),
-    url("../src/fonts/Avenir-Book.woff") format("woff");
+  font-family: "Avenir";
+  src: local("Avenir-Book"), url("../src/fonts/Avenir-Book.woff") format("woff");
 }
 
 :root {
   /*--- Colors ---*/
-  --green: #172D0A;
-  --beige:  #f2e9e1;
-  --offwhite: #F9F4EF; 
-  --checkbox: #D9D9D9;
+  --green: #172d0a;
+  --beige: #f2e9e1;
+  --offwhite: #f9f4ef;
+  --checkbox: #d9d9d9;
 
-   /*--- Font sizes ---*/
+  /*--- Font sizes ---*/
 
   /* Desktop */
   --h1-desktop: 5.5rem;
@@ -30,8 +29,7 @@
   --h1-mobile: 3.5rem;
   --h2-mobile: 1.5rem;
   --h3-mobile: 1.3rem;
-
-};
+}
 
 html,
 body {
@@ -51,4 +49,3 @@ a {
 body {
   background: var(--beige);
 }
-

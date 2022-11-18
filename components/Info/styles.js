@@ -7,7 +7,6 @@ export const HeadingWrapper = styled.div`
   justify-content: center;
   align-content: center;
 `;
-
 export const Heading = styled.h1`
   font-family: "HWT";
   font-size: var(--h1-mobile);
@@ -19,7 +18,6 @@ export const Heading = styled.h1`
     font-size: var(--h1-desktop);
   }
 `;
-
 export const AboutText = styled.text`
   font-size: var(--p-desktop);
   font-family: "Avenir";
@@ -31,7 +29,6 @@ export const AboutText = styled.text`
     width: 50%;
   }
 `;
-
 export const ImageWrapper = styled.div`
   width: 100%;
   display: flex;

@@ -4,6 +4,7 @@ import {
   Marker,
   useJsApiLoader,
 } from "@react-google-maps/api";
+
 import {
   MapContainerWrapper,
   MapContainerText,
@@ -12,10 +13,10 @@ import {
   BureauLink,
   FilterHeading,
 } from "./styles.js";
+
 import { getDocs } from "firebase/firestore";
 import { useEffect, useState } from "react";
 import { colRef } from "../Firebase/firebase.js";
-import { useRef } from "react";
 
 const FILTERS = [
   { label: "Webbyrå", id: "Webbyrå" },
@@ -24,22 +25,15 @@ const FILTERS = [
   { label: "Visa alla", id: "All" },
 ];
 
-const filterData = (docs, filterType) =>
-  docs
-    .filter((doc) => doc.data().type === filterType)
-    .map((doc) => ({
-      id: doc.id,
-      ...doc.data(),
-    }));
-
 // Container för karta
 const MapContainer = () => {
-  const mapContainerStyle = {
+  const mapContainer = {
     width: "65vw",
     height: "55vh",
   };
-  const checkboxRef = useRef([]);
-  const center = { lat: 57.70887, lng: 11.97456 };
+
+  // Koordinater för Göteborg
+  const coordinatesGothenburg = { lat: 57.70887, lng: 11.97456 };
 
   // Sätter upp google maps API
   const apiKey = process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY;
@@ -66,9 +60,9 @@ const MapContainer = () => {
     <MapContainerWrapper>
       {isLoaded && (
         <GoogleMap
-          mapContainerStyle={mapContainerStyle}
+          mapContainerStyle={mapContainer}
           zoom={12}
-          center={center}
+          center={coordinatesGothenburg}
         >
           {selected === "All"
             ? markers.map((marker) => {

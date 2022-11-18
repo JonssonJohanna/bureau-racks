@@ -2,7 +2,7 @@
 
 ## Final school project by Amanda Printz and Johanna Jönsson
 
-As a final part of the program, we have completed a project within the framework of the acquired knowledge. The main purpose of this project was to come up with an idea and build something awesome and cool. We created this website using Next.js and Firestore. The project includes Google maps Api.
+As a final part of the program, we have completed a project within the framework of the acquired knowledge. The main purpose of this project was to come up with an idea and build something awesome and cool. We created this website using Next.js, Firestore and styled components for styling. The project also includes the Google maps Api.
 
 Check out our website [here](https://bureau-racks-d4fj.vercel.app/)
 

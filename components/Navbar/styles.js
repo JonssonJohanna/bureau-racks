@@ -13,14 +13,12 @@ export const NavbarWrapper = styled.div`
     padding: 2rem 4rem 1rem 4rem;
   }
 `;
-
 export const NavLink = styled.a`
   padding-left: 3rem;
   cursor: pointer;
   color: var(--green);
   font-size: var(--h2-mobile);
   color: var(--green);
-  
   @media ${device.tablet} {
     font-size: var(--h2-desktop);
   }

@@ -8,7 +8,6 @@ import {
 } from "./styles";
 import walking from "./../../public/walking.png";
 import Image from "next/image";
-import { ImageWrapper } from "../Info/styles";
 
 const Header = () => {
   return (

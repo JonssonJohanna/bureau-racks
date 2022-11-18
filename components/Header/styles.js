@@ -7,7 +7,6 @@ export const TitleWrapper = styled.div`
   width: 100%;
   justify-content: center;
 `;
-
 export const HeroSection = styled.div`
   display: flex;
   flex-direction: column;
@@ -16,9 +15,7 @@ export const HeroSection = styled.div`
   @media ${device.tablet} {
     flex-direction: row;
   }
-
 `;
-
 export const Heading = styled.text`
   font-family: "HWT";
   color: var(--green);
@@ -28,7 +25,6 @@ export const Heading = styled.text`
     font-size: var(--h1-desktop);
   }
 `;
-
 export const HeroDescription = styled.div`
   width: 100%;
   display: flex;
@@ -44,12 +40,10 @@ export const HeroText = styled.text`
     width: 45%;
   }
 `;
-
 export const Intro = styled.div`
   padding-top: 2rem;
 `;
 export const ImageWrapperHeader = styled.div`
-
   display: flex;
   justify-content: center;
 `;

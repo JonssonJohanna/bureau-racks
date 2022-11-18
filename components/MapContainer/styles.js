@@ -16,9 +16,8 @@ export const MapContainerWrapper = styled.div`
     flex-direction: row;
   }
 `;
-
 export const MapContainerText = styled.div`
-  font-family: HWT;
+  font-family: "HWT";
   font-size: var(--h3-mobile);
   font-weight: bold;
   color: var(--green);
@@ -32,12 +31,7 @@ export const MapContainerText = styled.div`
     font-size: var(--h3-desktop);
   }
 `;
-
-//Test för att få 'filtrera val' att hamna i column i mobil
-export const FilterHeadingWrapper = styled.div`
-  padding-bottom: 1rem;
-`;
-export const FilterHeading = styled.p`
+export const FilterHeading = styled.h3`
   flex-wrap: wrap;
   display: flex;
   flex-direction: row;
@@ -63,12 +57,10 @@ export const Label = styled.label`
     }
   }
 `;
-
 export const BureauLink = styled.a`
   cursor: pointer;
   font-weight: bold;
 `;
-
 export const Radio = styled.input`
   -webkit-appearance: none;
   appearance: none;
@@ -87,11 +79,7 @@ export const Radio = styled.input`
     height: 0.75em;
     margin: 3px;
   }
-  :hover {
-    ::after {
-      background-color: var(--checkbox);
-    }
-  }
+
   :checked {
     ::after {
       background-color: var(--green);
@@ -99,20 +87,9 @@ export const Radio = styled.input`
     :disabled {
       cursor: not-allowed var(--checkbox);
       background-color: var(--checkbox);
-      :hover {
-        ::after {
-          background-color: var(--checkbox);
-        }
-      }
       :checked {
         ::after {
           background-color: var(--checkbox);
-        }
-        :hover {
-          background-color: var(--checkbox);
-          ::after {
-            background-color: var(--checkbox);
-          }
         }
       }
     }
