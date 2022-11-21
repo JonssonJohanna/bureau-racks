@@ -67,7 +67,7 @@ export const Radio = styled.input`
   margin: 0;
   width: 1.5em;
   height: 1.5em;
-  border: 2px solid black;
+  border: 2px solid var(--green);
   background-color: var(--checkbox);
   margin-right: 1rem;
   border-radius: 50%;
