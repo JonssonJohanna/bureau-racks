@@ -3,7 +3,7 @@ import {
   InfoWindow,
   Marker,
   useJsApiLoader,
-} from "@react-google-maps/api";
+} from '@react-google-maps/api';
 
 import {
   MapContainerWrapper,
@@ -12,24 +12,24 @@ import {
   Radio,
   BureauLink,
   FilterHeading,
-} from "./styles.js";
+} from './styles.js';
 
-import { getDocs } from "firebase/firestore";
-import { useEffect, useState } from "react";
-import { colRef } from "../Firebase/firebase.js";
+import { getDocs } from 'firebase/firestore';
+import { useEffect, useState } from 'react';
+import { colRef } from '../Firebase/firebase.js';
 
 const FILTERS = [
-  { label: "Webbyrå", id: "Webbyrå" },
-  { label: "Produktbolag", id: "Produktbolag" },
-  { label: "Reklambyrå", id: "Reklambyrå" },
-  { label: "Visa alla", id: "All" },
+  { label: 'Webbyrå', id: 'Webbyrå' },
+  { label: 'Produktbolag', id: 'Produktbolag' },
+  { label: 'Reklambyrå', id: 'Reklambyrå' },
+  { label: 'Visa alla', id: 'All' },
 ];
 
 // Container för karta
 const MapContainer = () => {
   const mapContainer = {
-    width: "65vw",
-    height: "55vh",
+    width: '65vw',
+    height: '55vh',
   };
 
   // Koordinater för Göteborg
@@ -44,7 +44,7 @@ const MapContainer = () => {
   // Firebase realterat
   const [markers, setMarkers] = useState([]);
   const [selectedMarkers, setSelectedMarkers] = useState(null);
-  const [selected, setSelected] = useState("All");
+  const [selected, setSelected] = useState('All');
 
   const getMarkers = async () => {
     await getDocs(colRef).then((data) => {
@@ -64,7 +64,7 @@ const MapContainer = () => {
           zoom={12}
           center={coordinatesGothenburg}
         >
-          {selected === "All"
+          {selected === 'All'
             ? markers.map((marker) => {
                 return (
                   <div key={marker.id}>
@@ -74,7 +74,7 @@ const MapContainer = () => {
                         lng: marker.geoPoint._long,
                       }}
                       icon={{
-                        url: "/dawg.svg",
+                        url: '/dawg.svg',
                         scaledSize: new window.google.maps.Size(30, 30),
                       }}
                       onClick={() => {
@@ -97,7 +97,7 @@ const MapContainer = () => {
                           lng: marker.geoPoint._long,
                         }}
                         icon={{
-                          url: "/dawg.svg",
+                          url: '/dawg.svg',
                           scaledSize: new window.google.maps.Size(30, 30),
                         }}
                         onClick={() => {
@@ -133,12 +133,12 @@ const MapContainer = () => {
             <Label>
               <Radio
                 name={filter.id}
-                type="checkbox"
+                type='checkbox'
                 checked={selected.includes(filter.id)}
                 onChange={(event) => {
-                  if (filter.id === "All") {
+                  if (filter.id === 'All') {
                     setSelected(
-                      FILTERS.filter((item) => item.id !== "All").map(
+                      FILTERS.filter((item) => item.id !== 'All').map(
                         (filteredOption) => {
                           return filteredOption.id;
                         }
